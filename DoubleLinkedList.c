@@ -386,11 +386,11 @@ void search(int data) {
          switch(con){
          	case 1:
          		temp = current->prev;
-         		printf("%d",temp->data);
+         		printf("the previous number is :%d",temp->data);
          		break;
          	case 2:
          		temp = current->next;
-         		printf("%d",temp->data);
+         		printf("the next number is %d",temp->data);
          		break;
          	default:
          		printf("this number does not work. only one or two");
