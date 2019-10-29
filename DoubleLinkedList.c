@@ -5,11 +5,12 @@
 
 struct node {
     int data;
+    //char[20] str;
     struct node * prev;
     struct node * next;
 }*head, *last;
 
-
+struct node *current = NULL;
 void createList(int n);
 void displayList();
 void insertAtBeginning(int data);
@@ -33,6 +34,7 @@ int main(){
 		printf("\nEnter five to delete item at the begginning \n");
 		printf("\nEnter six to delete item at the end(last) \n");
 		printf("\nEnter seven delete item at the middle \n");
+		printf("\nEnter eight to search an item \n");
 		printf("\n#####################################################################\n");
 		scanf("%d",&s);
 	switch(s)//this switch will help us to choose the operation what we want
@@ -88,6 +90,14 @@ int main(){
     		printf("\nData in the list \n");
     		displayList();
 		    break;
+		case 8:
+		    printf("Enter the item you want to search: ");
+            scanf("%d", &n);
+            search(n);
+    		printf("\nData in the list \n");
+    		displayList();
+		    break;
+
 	    default:
 	    	printf("no operation for this number");
     }j = 1;
@@ -96,7 +106,6 @@ scanf("%d",&r);
 }while(j<=r);
 	
 }
-
 
 void createList(int n)
 {
@@ -352,3 +361,50 @@ void deleteFromN(int position)
     }
 }
 
+void search(int data) {
+   int pos = 0;
+   struct node *temp;
+   
+   if(head==NULL) {
+      printf("Linked List not initialized");
+      return;
+   } 
+
+   current = head;
+   while(current!=NULL) {
+      pos++;
+      if(current->data == data) {
+         printf("%d found at position %d\n", data, pos);
+         
+         printf("\n############################################\n");
+         printf("press one for previous\n");
+         printf("press two for next");
+         printf("\n#############################################\n");
+         
+		 int con;
+		 scanf("%d",&con);
+         switch(con){
+         	case 1:
+         		temp = current->prev;
+         		printf("%d",temp->data);
+         		break;
+         	case 2:
+         		temp = current->next;
+         		printf("%d",temp->data);
+         		break;
+         	default:
+         		printf("this number does not work. only one or two");
+         		break;
+         		
+		 }
+         return;
+      }
+
+      if(current->next != NULL)
+         current = current->next;
+      else
+         break;
+   }
+
+   printf("%d does not exist in the list\n", data);
+}
