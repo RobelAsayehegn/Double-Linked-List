@@ -5,7 +5,6 @@
 
 struct node {
     int data;
-    //char[20] str;
     struct node * prev;
     struct node * next;
 }*head, *last;
@@ -37,7 +36,7 @@ int main(){
 		printf("\nEnter eight to search an item \n");
 		printf("\n#####################################################################\n");
 		scanf("%d",&s);
-	switch(s)//this switch will help us to choose the operation what we want
+	switch(s)
     {
 	    case 1:
 	    	printf("Enter the total number of nodes in list: ");
@@ -142,7 +141,7 @@ void createList(int n)
             last = newNode;       
         }
 
-        printf("\nDOUBLY LINKED LIST CREATED SUCCESSFULLY\n");
+        printf("\nlist created successfully\n");
     }
 }
 
@@ -158,14 +157,11 @@ void displayList()
     else
     {
         temp = head;
-        printf("DATA IN THE LIST:\n");
-
+        printf("data in the list:\n");
         while(temp != NULL)
         {
             printf("DATA of %d node = %d\n", n, temp->data);
-
             n++;
-
             temp = temp->next;
         }
     }
@@ -175,7 +171,6 @@ void displayList()
 void insertAtBeginning(int data)
 {
     struct node * newNode;
-
     if(head == NULL)
     {
         printf("Error, List is Empty!\n");
@@ -183,18 +178,12 @@ void insertAtBeginning(int data)
     else
     {
         newNode = (struct node *)malloc(sizeof(struct node));
-
         newNode->data = data;
         newNode->next = head; 
         newNode->prev = NULL; 
-
-        
         head->prev = newNode;
-
-        
         head = newNode;
-
-        printf("NODE INSERTED SUCCESSFULLY AT THE BEGINNING OF THE LIST\n");
+        printf("element created successfully\n");
     }
 }
 
@@ -210,15 +199,13 @@ void insertAtEnd(int data)
     else
     {
         newNode = (struct node *)malloc(sizeof(struct node));
-
         newNode->data = data;
         newNode->next = NULL;
         newNode->prev = last;
-
         last->next = newNode;
         last = newNode;
 
-        printf("NODE INSERTED SUCCESSFULLY AT THE END OF LIST\n");
+        printf("element inserted successfully\n");
     }
 }
 
@@ -268,7 +255,7 @@ void insertAtN(int data, int position)
          
             temp->next = newNode;
 
-            printf("NODE INSERTED SUCCESSFULLY AT %d POSITION\n", position);
+            printf("element inserted successfullyn");
         }
         else
         {
@@ -297,7 +284,7 @@ void deleteFromBeginning()
             head->prev = NULL; 
 
         free(toDelete); 
-        printf("SUCCESSFULLY DELETED NODE FROM BEGINNING OF THE LIST.\n");
+        printf("element deleted successfully.\n");
     }
 }
 
@@ -321,7 +308,7 @@ void deleteFromEnd()
             last->next = NULL; 
 
         free(toDelete);
-        printf("SUCCESSFULLY DELETED NODE FROM END OF THE LIST.\n");
+        printf("elemet deleted successfully.\n");
     }
 }
 
@@ -351,9 +338,9 @@ void deleteFromN(int position)
         current->prev->next = current->next;
         current->next->prev = current->prev;
 
-        free(current); // Delete the n node
+        free(current); 
 
-        printf("SUCCESSFULLY DELETED NODE FROM %d POSITION.\n", position);
+        printf("deleted successfully.\n");
     }
     else
     {
@@ -386,14 +373,14 @@ void search(int data) {
          switch(con){
          	case 1:
          		temp = current->prev;
-         		printf("the previous number is :%d",temp->data);
+         		printf("the previous number is %d",temp->data);
          		break;
          	case 2:
          		temp = current->next;
          		printf("the next number is %d",temp->data);
          		break;
          	default:
-         		printf("this number does not work. only one or two");
+         		printf("please enter valid number(1,2)");
          		break;
          		
 		 }
